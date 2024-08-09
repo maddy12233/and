@@ -1,0 +1,167 @@
+Simple Calculator
+
+<?xmlversion="1.0"encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/firstNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:backgroundTint="#FFBF00"
+            android:ems="7"
+            android:hint="EnterFirstNo"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/secondtNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#FFBF00"
+            android:ems="7"
+            android:inputType="number"
+            android:gravity="center"
+            android:hint="EnterSecondNo"
+            android:minHeight="48dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/output">
+
+        <Button
+            android:onClick="add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textColor="@color/black"
+            android:backgroundTint="#FFBF00"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+		 android:layout_marginTop="10dp"/>
+
+        <Button
+            android:onClick="sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="-"
+            android:backgroundTint="#FFBF00"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp
+		  android:layout_marginTop="10dp"/>
+      
+  	<Button
+            android:onClick="mul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="*"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:backgroundTint="#FFBF00"
+            android:layout_marginLeft="10dp"
+		   android:layout_marginTop="10dp"/>
+
+        <Button
+            android:onClick="div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:gravity="center"
+            android:backgroundTint="#FFBF00"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:textSize="25dp 
+                  android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Mainactivity.java
+
+package com.example.simplecalculator;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity
+{
+    int number1, number2;
+    TextView output;
+    EditText no1,no2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+         no1 = (EditText) findViewById(R.id.firstNo);
+         no2 = (EditText) findViewById(R.id.secondtNo);
+         output =(TextView) findViewById(R.id.output);
+    }
+
+    public void add(View view)
+    {
+        number1 = Integer.parseInt(no1.getText().toString());
+        number2 = Integer.parseInt(no2.getText().toString());
+        output.setText(String.valueOf(number1+number2));
+    }
+    public void sub(View view)
+    {
+        number1 = Integer.parseInt(no1.getText().toString());
+        number2 = Integer.parseInt(no2.getText().toString());
+        output.setText(String.valueOf(number1-number2));
+     }
+    public void mul(View view)
+    {
+        number1 = Integer.parseInt(no1.getText().toString());
+        number2 = Integer.parseInt(no2.getText().toString());
+        output.setText(String.valueOf(number1*number2));
+    }
+    public void div(View view)
+    {
+        number1 = Integer.parseInt(no1.getText().toString());
+        number2 = Integer.parseInt(no2.getText().toString());
+        output.setText(String.valueOf(number1/number2));
+    }
+}
+
